@@ -1,0 +1,77 @@
+/*GENERAL SETTINGS*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 20px;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url('../images/background.jpg');
+  flex-wrap: nowrap;
+
+}
+/* SECTION clickArea*/
+div.cookie{
+  background-image: url('../images/cookie.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 350px;
+  width: 100%;
+}
+div.cookie:hover {
+  transform: scale(1.2);
+  transition: transform .25 easy;
+  cursor: pointer;
+}
+
+div.cookie:active {
+  border: 5px solid transparent;
+}
+h1, h2 {
+  text-align: center;
+  color: white;
+  font-family: Slabo;
+}
+
+.container:nth-child(2) {
+  background-color: rgba(0, 0, 0, 0.71);
+
+}
+/*SECTION infroArea*/
+
+.makers {
+  font-size: 20px;
+  line-height: 40px;
+}
+#infoArea button {
+  height: 100%;
+  width:100%;
+  border: 1px solid rgb(23, 46, 51);
+}
+
+.cost {
+  font-size: 1.5rem;
+  line-height: 50px;
+}
+.score {
+  text-align: center;
+  font-size: 40px;
+}
+/*RESPONSIVE SETTINGS*/
+@media (min-width: 320px) {
+  div.cookie{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (min-width: 920px) {
+  div.cookie {
+    margin-top: 5rem;
+  }
+}
