@@ -8,19 +8,19 @@ div.cookiesdrops {
   width: 20px;
   position: absolute;
   bottom:200px;
-  -webkit-animation: fall 15.63s linear infinite;
-  -moz-animation: fall 15.63s linear infinite;
+  -webkit-animation: fall 15s linear infinite;
+  -moz-animation: fall 15s linear infinite;
 
 }
 @-webkit-keyframes fall {
   0% {
-    -webkit-transform: translateY(0px);
+    -webkit-transform: translateY(0vh);
   }
   50% {
-    -webkit-transform: translateY(600px);
+    -webkit-transform: translateY(50vh);
   }
   100% {
-    -webkit-transform: translateY(1200px);
+    -webkit-transform: translateY(100vh);
   }
 }
 @-moz-keyframes fall {
@@ -45,6 +45,8 @@ div.cookiesdrops {
   z-index: 100;
   display: none;
   color: white;
+  border: 2px solid white;
   border-radius: 5px;
+
 
 }

@@ -11,7 +11,7 @@ html {
 body {
   min-height: 100vh;
   background-image: url('../images/background.jpg');
-  flex-wrap: nowrap;
+
 
 }
 /* SECTION clickArea*/
@@ -20,8 +20,10 @@ div.cookie{
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  margin-top: 3rem;
   height: 350px;
-  width: 100%;
+  width: 350px;
+
 }
 div.cookie:hover {
   transform: scale(1.2);
@@ -32,14 +34,25 @@ div.cookie:hover {
 div.cookie:active {
   border: 5px solid transparent;
 }
-h1, h2 {
+.dropArea .row .col-12 {
+  display: flex;
+  justify-content: center;
+}
+h1 {
   text-align: center;
   color: white;
   font-family: Slabo;
 }
+h2 {
+
+  color: white;
+  font-family: Slabo;
+  font-size: 1rem;
+  line-height: 50px;
+}
 
 .container:nth-child(2) {
-  background-color: rgba(0, 0, 0, 0.71);
+  border-bottom: 2px solid black;
 
 }
 /*SECTION infroArea*/
@@ -62,16 +75,6 @@ h1, h2 {
   text-align: center;
   font-size: 40px;
 }
-/*RESPONSIVE SETTINGS*/
-@media (min-width: 320px) {
-  div.cookie{
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-  }
-}
-
-@media (min-width: 920px) {
-  div.cookie {
-    margin-top: 5rem;
-  }
+.amount, .productivity {
+  color: white;
 }

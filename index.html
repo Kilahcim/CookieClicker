@@ -11,7 +11,7 @@
     <title>CookieClicker</title>
   </head>
   <body>
-
+<!-- *****************************FirstSection***************************** -->
     <section id="clickArea">
       <div class="container dropArea">
         <div class="row">
@@ -36,7 +36,7 @@
         </div>
       </div>
     </section>
-
+<!--***************************** SecondSection *****************************-->
     <section id="infoArea">
       <div class="container">
         <div class="row">
@@ -58,14 +58,14 @@
               <div class="col-3">
                 <img src="images/cursor.png" alt="coursor" class="icon">
                 <div class="popup">
-                  <p>Each coursor produces <span>1</span> cookies per second</p>
+                  <p>Autoclick once every 10 seconds</p>
                 </div>
               </div>
               <div class="col-3 cost">
-                <span>10</span>
+                <span class="price">10</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary">CURSOR</button>
+                <button class="btn btn-primary" data-name="cursor" data-price="10" data-productivity="0.1">CURSOR</button>
               </div>
             </div>
 
@@ -77,10 +77,10 @@
                 </div>
               </div>
               <div class="col-3 cost">
-                <span>100</span>
+                <span class="price">100</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary">GRANDMA</button>
+                <button class="btn btn-primary" data-price="100" data-name="grandma" data-productivity="8">GRANDMA</button>
               </div>
             </div>
 
@@ -92,10 +92,10 @@
                 </div>
               </div>
               <div class="col-3 cost">
-                <span>1k</span>
+                <span class="price">1k</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary">FARM</button>
+                <button class="btn btn-primary"data-price="1000" data-name="farm" data-productivity="64">FARM</button>
               </div>
             </div>
             <div class="row makers">
@@ -106,10 +106,10 @@
                 </div>
               </div>
               <div class="col-3 cost">
-                <span>10k</span>
+                <span class="price">10k</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary">BAKERY</button>
+                <button class="btn btn-primary" data-price="10000" data-name="bakery" data-productivity="512">BAKERY</button>
               </div>
             </div>
             <div class="row makers">
@@ -120,18 +120,17 @@
                 </div>
               </div>
               <div class="col-3 cost">
-                <span>100k</span>
+                <span class="price">100k</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary">MINE</button>
-
+                <button class="btn btn-primary" data-price="100000" data-name="mine" data-productivity="4096">MINE</button>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-sm-12 score">
-            <p>You have <span>0</span> cookies</p>
+            <p>You have <span class="amount"></span> cookies</p>
             <p>&</p>
-            <p>You produce </span>0</span> cookies per second</p>
+            <p>Produce <span class="productivity"></span> cookies per second</p>
           </div>
         </div>
       </div>
@@ -143,11 +142,8 @@
     <script src="bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
-    <!-- <script src="app/animation.js"> -->
-    <script src="app/popup.js">
-
-    </script>
-
-    </script>
+    <script src="app/animation.js"></script>
+    <script src="app/popup.js"></script>
+    <script src="app/app.js"></script>
   </body>
 </html>

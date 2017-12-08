@@ -1,6 +1,6 @@
 var cookies = 215;
 
-
+// dla różnych rozdzielczości muszą być napisane różne przedziały losowania
 function random(min, max) {
   return (Math.floor(Math.random() * (max - min)) + min)
 }
