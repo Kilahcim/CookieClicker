@@ -13,7 +13,7 @@ $(function(){
   var cookieAmountToView = 0;
 
   var cost ={
-    pointer: 5,
+    cursor: 5,
     grandma: 10,
     farm: 1000,
     bakery: 10000,
@@ -21,7 +21,7 @@ $(function(){
   }
 
   var volume = {
-    pointer:0,
+    cursor: 0,
     grandma: 0,
     farm: 0,
     bakery: 0,
@@ -65,21 +65,22 @@ function shorten(num) {
   // Function for button click:
 
   button.on('click', function(){
+    var attribute = $(this).attr('data-name')
 
-    if((cookieCounter >= cost.pointer) && ($(this).attr('data-name') === 'cursor')){
+    if((cookieCounter >= cost.cursor) && ($(this).attr('data-name') === 'cursor')){
 // SUBTRACT COST MAKER AND TRANSFER VALUE TO TWO SAME VALUE, BUT IT IS NECESERY TO RUN SHORTEN FUNCTION
-      cookieCounter -= cost.pointer;
+      cookieCounter -= cost.cursor;
       cookieCounterToView = cookieCounter;
       amount.text(cookieCounterToView);
 // DISPLAY & INCREASING POINTER COST
 
-      cost.pointer = (cost.pointer * 1.3).toFixed(0);
-      ($(this).parent().prev('.cost')).text(cost.pointer);
+      cost.cursor = (cost.cursor * 1.05).toFixed(0);
+      ($(this).parent().prev('.cost')).text(cost.cursor);
 // DISPLAY & INCREASING POINTER AMOUNT
-
-      volume.pointer++;
-      $('.pointerAmount').text(volume.pointer);
-
+console.log(volume[attribute]);
+      volume[attribute]++;
+      var displayAmount =  $(this).parent().parent().children().first();
+      $(displayAmount).find('div.popup span.amountOfMakers').text(volume[attribute]);
 // CLICK FUNCTION
       setInterval(function(){
         mainCookie.trigger('click');
@@ -89,94 +90,80 @@ function shorten(num) {
 
 // GRANDMA
 
-    else if((cookieCounter >= cost.grandma) && ($(this).attr('data-name') === 'grandma')){
-      cookieCounter -= cost.grandma;
+    else if(cookieCounter >= cost[attribute]){
+
+      cookieCounter -= cost[attribute];
       cookieCounterToView = cookieCounter;
       amount.text(cookieCounterToView);
 
-      cost.grandma = (cost.grandma * 1.3).toFixed(0);
-      ($(this).parent().prev('.cost')).text(cost.grandma);
+      cost[attribute] = (cost[attribute] * 1.3).toFixed(0);
+      ($(this).parent().prev('.cost')).text(cost[attribute]);
 
-      volume.grandma++;
-      $('.grandmaAmount').text(volume.grandma);
+      volume[attribute]++;
+      var displayAmount =  $(this).parent().parent().children().first();
+      $(displayAmount).find('div.popup span.amountOfMakers').text(volume[attribute]);
 
-      productPerSecond += productivity.grandma;
+      productPerSecond += productivity[attribute];
       productivityDisplay.text(productPerSecond);
 
       setInterval(function(){
-        cookieCounter += productivity.grandma ;
+        cookieCounter += productivity[attribute] ;
         cookieCounterToView = cookieCounter;
 
       },1000)
 
     }
-// FARM
-    else if((cookieCounter >= cost.farm) && ($(this).attr('data-name') === 'farm')){
-      cookieCounter -= cost.farm;
-      cookieCounterToView = cookieCounter;
-      amount.text(cookieCounterToView);
-
-      cost.farm = (cost.farm * 1.3).toFixed(0);
-      ($(this).parent().prev('.cost')).text(cost.farm);
-
-      volume.farm++;
-      $('.farmAmount').text(volume.farm);
-
-      productPerSecond += productivity.farm;
-      productivityDisplay.text(productPerSecond);
-
-      setInterval(function(){
-        cookieCounter += productivity.farm ;
-        cookieCounterToView = cookieCounter;
-
-      },1000)
-
-    }
-// BAKERY
-    else if((cookieCounter >= cost.bakery) && ($(this).attr('data-name') === 'bakery')){
-      cookieCounter -= cost.bakery;
-      cookieCounterToView = cookieCounter;
-      amount.text(cookieCounterToView);
-
-      cost.bakery = (cost.bakery * 1.3).toFixed(0);
-      ($(this).parent().prev('.cost')).text(cost.bakery);
-
-      volume.bakery++;
-      $('.bakeryAmount').text(volume.bakery);
-
-      productPerSecond += productivity.bakery;
-      productivityDisplay.text(productPerSecond);
-
-      setInterval(function(){
-        cookieCounter += productivity.bakery ;
-        cookieCounterToView = cookieCounter;
-
-      },1000)
-
-    }
-    else if((cookieCounter >= cost.mine) && ($(this).attr('data-name') === 'mine')){
-      cookieCounter -= cost.mine;
-      cookieCounterToView = cookieCounter;
-      amount.text(cookieCounterToView);
-
-      cost.mine = (cost.mine * 1.3).toFixed(0);
-      ($(this).parent().prev('.cost')).text(cost.mine);
-
-      volume.mine++;
-      $('.mineAmount').text(volume.mine);
-
-      productPerSecond += productivity.mine;
-      productivityDisplay.text(productPerSecond);
-
-      setInterval(function(){
-        cookieCounter += productivity.mine ;
-        cookieCounterToView = cookieCounter;
-
-      },1000)
-
-    }
-
   })
+
+  var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+
+  console.log(cost);
+
+  if (!indexedDB) {
+    alert("ERROR, PLEASE USE A NEWER BROWSER ");
+  } else {
+    var open = indexedDB.open("scoreData");
+
+    open.onupgradeneeded = function() {
+      open.result.createObjectStore("MyObjectStore", {keyPath: "id"});
+      console.log("trololo");
+    };
+
+    open.onsuccess = function() {
+        var db = open.result;
+        var tx = db.transaction("MyObjectStore", "readwrite");
+        var store = tx.objectStore("MyObjectStore");
+
+        store.put({
+          id: "COST", value: cost
+        });
+        store.put({
+          id: "VOL", value: volume
+        });
+
+
+        var getCost = store.get("COST");
+        var getVolume = store.get("VOL");
+
+        getCost.onsuccess = function() {
+            console.log(getCost.result.value);
+        };
+
+        getVolume.onsuccess = function() {
+          console.log(getVolume.result.value);
+        };
+
+        
+
+
+
+
+        tx.oncomplete = function() {
+            db.close();
+        };
+    }
+  }
+
 
 
 
