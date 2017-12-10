@@ -1,4 +1,5 @@
 var icon = $('.icon');
+
 var popup = $('.popup')
 
 icon.on('mouseenter', function(icon){

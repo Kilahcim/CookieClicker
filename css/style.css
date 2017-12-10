@@ -13,6 +13,26 @@ body {
   background-image: url('../images/background.jpg');
 
 
+
+}
+/*SAVE & QUICK*/
+.save {
+  float: right;
+  margin: 2rem;
+  text-align: center;
+  
+}
+.save .escape{
+  height: 50px;
+  width: 150px;
+  background-image: url('../images/exit.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+.save:active {
+  transform: scale(1.2);
 }
 /* SECTION clickArea*/
 div.cookie{

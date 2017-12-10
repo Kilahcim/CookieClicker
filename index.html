@@ -11,6 +11,14 @@
     <title>CookieClicker</title>
   </head>
   <body>
+    <div class="save">
+      <div class="escape">
+      </div>
+      <div>
+        <p>SAVE & QUIT</p>
+      </div>
+
+    </div>
 <!-- *****************************FirstSection***************************** -->
     <section id="clickArea">
       <div class="container dropArea">
@@ -59,16 +67,17 @@
             <div class="row makers">
               <!-- POINTER -->
               <div class="col-3">
-                <img src="images/cursor.png" alt="coursor" class="icon">
+                <img src="images/cursor.png" alt="cursor" class="icon">
                 <div class="popup">
-                  <p>Autoclick once every 10 seconds</p>
+                  <p>Autoclick once every <span>10</span> seconds</p>
+                  <p>You have <span class="pointerAmount">0</span> curosor</p>
                 </div>
               </div>
               <div class="col-3 cost">
                 <span class="price">5</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary" data-name="cursor" data-price="5" data-productivity="0.1">CURSOR</button>
+                <button class="btn btn-primary" data-name="cursor">CURSOR</button>
               </div>
             </div>
             <!-- GRANDMA -->
@@ -76,14 +85,15 @@
               <div class="col-3">
                 <img src="images/grandma.png" alt="gradma" class="icon">
                 <div class="popup">
-                  <p>Each grandma produces <span>5</span> cookies per second</p>
+                  <p>Each grandma produces <span>8</span> cookies per second</p>
+                  <p>You have <span class="grandmaAmount">0</span> grandma</p>
                 </div>
               </div>
               <div class="col-3 cost">
                 <span class="price">10</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary" data-price="10" data-name="grandma" data-productivity="8">GRANDMA</button>
+                <button class="btn btn-primary" data-name="grandma">GRANDMA</button>
               </div>
             </div>
             <!-- FARM -->
@@ -92,13 +102,14 @@
                 <img src="images/farm.png" alt="farm" class="icon">
                 <div class="popup">
                   <p>Each farm produces <span>64</span> cookies per second</p>
+                  <p>You have <span class="farmAmount">0</span> farm</p>
                 </div>
               </div>
               <div class="col-3 cost">
                 <span class="price">1000</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary" data-price="1000" data-name="farm" data-productivity="64">FARM</button>
+                <button class="btn btn-primary" data-name="farm">FARM</button>
               </div>
             </div>
             <!-- BAKERY -->
@@ -106,35 +117,37 @@
               <div class="col-3">
                 <img src="images/factory.png" alt="factory" class="icon">
                 <div class="popup">
-                  <p>Each bakery produces <span>512</span> cookies per second</p>
+                  <p>Each bakery produces <span>256</span> cookies per second</p>
+                  <p>You have <span class="bakeryAmount">0</span> bakery</p>
                 </div>
               </div>
               <div class="col-3 cost">
                 <span class="price">10000</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary" data-price="10000" data-name="bakery" data-productivity="512">BAKERY</button>
+                <button class="btn btn-primary"data-name="bakery">BAKERY</button>
               </div>
             </div>
             <div class="row makers">
               <div class="col-3">
                 <img src="images/mine.png" alt="mine" class="icon">
                 <div class="popup">
-                  <p>Each mine produces <span>4096</span> cookies per second</p>
+                  <p>Each mine produces <span>512</span> cookies per second</p>
+                  <p>You have <span class="mainAmount">0</span> mine</p>
                 </div>
               </div>
               <div class="col-3 cost">
                 <span class="price">100000</span>
               </div>
               <div class="col-6">
-                <button class="btn btn-primary" data-price="100000" data-name="mine" data-productivity="4096">MINE</button>
+                <button class="btn btn-primary" data-name="mine">MINE</button>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-sm-12 score">
             <p>You have <span class="amount">0</span> cookies</p>
             <p>&</p>
-            <p>Produce <span class="productivity"></span> cookies per second</p>
+            <p>Produce <span class="productivity">0</span> cookies per second</p>
           </div>
         </div>
       </div>
@@ -146,8 +159,9 @@
     <script src="bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
-    <script src="app/animation.js"></script>
+    <!-- <script src="app/animation.js"></script> -->
     <script src="app/popup.js"></script>
     <script src="app/app.js"></script>
+    <script src="app/basetest.js"></script>
   </body>
 </html>
