@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function(){
   var height = window.innerHeight;
   var img =  new Image();
   img.src = "images/cookie.png";
-  var imgBG = new Image();
-  imgBG.src = "images/background.jpg"
   canvas.width = width;
   canvas.height = height;
   var context = canvas.getContext('2d');

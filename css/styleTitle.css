@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #fffc00;
+}
+html {
+  font-size: 20px;
+}
+
+body {
+  min-height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.logo {
+  height: 300px;
+  width: 350px;
+  background-image: url('../images/cool-logo.png');
+  background-repeat: no-repeat;
+  margin: auto;
+  text-align: center;
+}
+.play {
+  height: 100px;
+  width: 300px;
+  background-image: url('../images/play.png');
+  background-repeat: no-repeat;
+  margin: auto;
+  text-align: center;
+  z-index: 99;
+}
+.play:hover {
+  cursor: pointer;
+}
+.author {
+  height: 300px;
+  width: 535px;
+  background-image: url('../images/author.png');
+  background-repeat: no-repeat;
+  margin: auto;
+  text-align: center;
+}
