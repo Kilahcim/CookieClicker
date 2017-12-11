@@ -10,18 +10,21 @@ html {
 
 body {
   min-height: 100vh;
-  background-image: url('../images/background.jpg');
+  background-image: url('../images/background.jpg')
+}
 
-
+canvas {
+  position: absolute;
 
 }
+
 /*SAVE & QUICK*/
 .save {
   float: right;
-  margin: 2rem;
+  margin-top: 0.2rem;
   text-align: center;
-  
 }
+
 .save .escape{
   height: 50px;
   width: 150px;
@@ -29,18 +32,21 @@ body {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-
 }
+.save p {
+  margin: 0;
+}
+
 .save:active {
   transform: scale(1.2);
 }
+
 /* SECTION clickArea*/
 div.cookie{
   background-image: url('../images/cookie.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  margin-top: 3rem;
   height: 350px;
   width: 350px;
 
@@ -71,10 +77,6 @@ h2 {
   line-height: 50px;
 }
 
-.container:nth-child(2) {
-  border-bottom: 2px solid black;
-
-}
 /*SECTION infroArea*/
 
 .makers {

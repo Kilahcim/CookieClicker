@@ -140,10 +140,14 @@ console.log(volume[attribute]);
         store.put({
           id: "VOL", value: volume
         });
+        store.put({
+          id: "PRODUCTIVITY", value: productivity
+        })
 
 
         var getCost = store.get("COST");
         var getVolume = store.get("VOL");
+        var getProductivity = store.get("PRODUCTIVITY")
 
         getCost.onsuccess = function() {
             console.log(getCost.result.value);
@@ -152,8 +156,30 @@ console.log(volume[attribute]);
         getVolume.onsuccess = function() {
           console.log(getVolume.result.value);
         };
+        getProductivity.onsuccess = function() {
+          console.log(getProductivity.result.value)
+        }
+        getCost.onerror = function() {
+          alert("Request doesnt work. Wait I'am traing again");
+          store.put({
+            id: "COST", value: cost
+          });
+        };
 
-        
+        getVolume.onerror = function() {
+          alert("Request doesnt work. Wait I'am traing again");
+          store.put({
+            id: "VOL", value: volume
+          });
+        };
+        getProductivity.onerror = function() {
+          alert("Request doesnt work. Wait I'am traing again");
+          store.put({
+            id: "PRODUCTIVITY", value: productivity
+          })
+        }
+
+
 
 
 
