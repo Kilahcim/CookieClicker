@@ -36,17 +36,16 @@ var productivity = {
 // shorten a large number
 
 function shorten(num) {
+  if (num < 1000) {
+    return num;
+  }
+  if (num > 999) {
+    return ((num/1000).toFixed(2) + 'k');
 
-if (num < 1000) {
-  return num;
-}
-if (num > 999) {
-  return ((num/1000).toFixed(2) + 'k');
-
-}
-if(num > 999999) {
-  return (num/1000000).toFixed(3) + 'mln';
-}
+  }
+  if(num > 999999) {
+    return (num/1000000).toFixed(3) + 'mln';
+  }
 }
 
 
@@ -55,12 +54,11 @@ mainCookie.on('click', function(){
   cookieCounter++
   amount.text(shorten(cookieCounterToView));
 })
-// DISPLAY SCORE PER SECOND FUNCTION
+// DISPLAY SCORE, SCORE PER SECOND FUNCTION
 setInterval(function(){
   cookieCounter += productPerSecond;
   cookieCounterToView = cookieCounter;
   amount.text(shorten(cookieCounterToView));
-
 },1000);
 
 // Function for button click:
@@ -97,13 +95,14 @@ button.on('click', function(){
     amount.text(cookieCounterToView);
 
     cost[attribute] = (cost[attribute] * 1.3).toFixed(0);
-    ($(this).parent().prev('.cost')).text(cost[attribute]);
+    ($(this).parent().prev('.cost')).text(shorten(cost[attribute]));
 
     volume[attribute]++;
     var displayAmount =  $(this).parent().parent().children().first();
     $(displayAmount).find('div.popup span.amountOfMakers').text(volume[attribute]);
 
     productPerSecond += productivity[attribute];
-    productivityDisplay.text(productPerSecond);
+    productivityDisplay.text(shorten(productPerSecond));
+
   }
 });

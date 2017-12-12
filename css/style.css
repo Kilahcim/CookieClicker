@@ -16,9 +16,12 @@ body {
 
 canvas {
   position: absolute;
+  display: block;
 
 }
-
+.center {
+  margin: auto;
+}
 /*SAVE & QUICK*/
 .save {
   float: right;
@@ -40,6 +43,9 @@ canvas {
 
 .save:active {
   transform: scale(1.2);
+}
+.save:hover {
+  cursor: pointer;
 }
 
 /* SECTION clickArea*/

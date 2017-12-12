@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no" >
+    <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <title>CookieClicker</title>
+  </head>
+  <body>
+    <canvas id="cookiesDrops" width="0" height="0"></canvas>
+<!-- *****************************FirstSection***************************** -->
+    <section id="clickArea">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="save">
+              <!-- onClick="javascript:window.location.href='index.html'" -->
+              <div class="escape">
+              </div>
+              <div>
+                <p>SAVE & QUIT</p>
+              </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="container dropArea">
+        <div class="row">
+          <div class="col-12">
+            <div class="cookie">
+            </div>
+          </div>
+        </div>
+    </section>
+<!--***************************** SecondSection *****************************-->
+    <section id="infoArea">
+      <div class="container">
+        <div class="row">
+
+        </div>
+        <!-- COOKIES MAKERS  -->
+
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-12 center">
+              <div class="header">
+                <h1>STORE:</h1>
+              </div>
+            </div>
+            <div class="row makers">
+              <!-- POINTER -->
+              <div class="col-3">
+                <img src="images/cursor.png" alt="cursor" class="icon">
+                <div class="popup">
+                  <p>Autoclick once every <span>10</span> seconds</p>
+                  <p>You have <span class="amountOfMakers">0</span> curosor</p>
+                </div>
+              </div>
+              <div class="col-3 cost">
+                <span class="price">5</span>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-warning" data-name="cursor">CURSOR</button>
+              </div>
+            </div>
+            <!-- GRANDMA -->
+            <div class="row makers">
+              <div class="col-3">
+                <img src="images/grandma.png" alt="gradma" class="icon">
+                <div class="popup">
+                  <p>Each grandma produces <span>8</span> cookies per second</p>
+                  <p>You have <span class="amountOfMakers">0</span> grandma</p>
+                </div>
+              </div>
+              <div class="col-3 cost">
+                <span class="price">10</span>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-warning" data-name="grandma">GRANDMA</button>
+              </div>
+            </div>
+            <!-- FARM -->
+            <div class="row makers">
+              <div class="col-3">
+                <img src="images/farm.png" alt="farm" class="icon">
+                <div class="popup">
+                  <p>Each farm produces <span>64</span> cookies per second</p>
+                  <p>You have <span class="amountOfMakers">0</span> farm</p>
+                </div>
+              </div>
+              <div class="col-3 cost">
+                <span class="price">1k</span>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-warning" data-name="farm">FARM</button>
+              </div>
+            </div>
+            <!-- BAKERY -->
+            <div class="row makers">
+              <div class="col-3">
+                <img src="images/factory.png" alt="factory" class="icon">
+                <div class="popup">
+                  <p>Each bakery produces <span>256</span> cookies per second</p>
+                  <p>You have <span>0</span> bakery</p>
+                </div>
+              </div>
+              <div class="col-3 cost">
+                <span class="price">10k</span>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-warning" data-name="bakery">BAKERY</button>
+              </div>
+            </div>
+            <div class="row makers">
+              <div class="col-3">
+                <img src="images/mine.png" alt="mine" class="icon">
+                <div class="popup">
+                  <p>Each mine produces <span>512</span> cookies per second</p>
+                  <p>You have <span>0</span> mine</p>
+                </div>
+              </div>
+              <div class="col-3 cost">
+                <span class="price">100k</span>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-warning" data-name="mine">MINE</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 score">
+            <div class="col-md-6 col-sm-12 center">
+              <div class="header">
+                <h1>SCORE:</h1>
+              </div>
+            </div>
+            <p>You have <span class="amount">0</span> cookies</p>
+            <p>&</p>
+            <p>Produce <span class="productivity">0</span> cookies per second</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="app/animation.js"></script>
+    <script src="app/popup.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/base.js"></script>
+  </body>
+</html>
