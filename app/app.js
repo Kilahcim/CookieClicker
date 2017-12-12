@@ -12,11 +12,11 @@ var cookieCounterToView = 0;
 var cookieAmountToView = 0;
 
 var cost ={
-  cursor: 5,
-  grandma: 10,
-  farm: 1000,
-  bakery: 10000,
-  mine: 100000
+  cursor: 15,
+  grandma: 100,
+  farm: 1100,
+  bakery: 12000,
+  mine: 130000
 }
 
 var volume = {
@@ -28,9 +28,9 @@ var volume = {
 }
 
 var productivity = {
-  grandma: 8,
-  farm: 64,
-  bakery: 256,
+  grandma: 1,
+  farm: 8,
+  bakery: 47,
   mine: 512
 }
 // shorten a large number
