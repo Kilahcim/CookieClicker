@@ -57,6 +57,7 @@ div.cookie{
   border-radius: 50%;
   height: 350px;
   width: 350px;
+  margin-bottom: 2rem;
 
 }
 div.cookie:hover {

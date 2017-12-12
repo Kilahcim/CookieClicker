@@ -55,6 +55,7 @@ mainCookie.on('click', function(){
   amount.text(shorten(cookieCounterToView));
 })
 // DISPLAY SCORE, SCORE PER SECOND FUNCTION
+
 setInterval(function(){
   cookieCounter += productPerSecond;
   cookieCounterToView = cookieCounter;

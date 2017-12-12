@@ -3,12 +3,9 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 if (!indexedDB) {
   alert("ERROR, PLEASE USE A NEWER BROWSER ");
 } else {
-  var save = document.querySelector('.save');
+  document.querySelector('.save').addEventListener('click', function(){
+  var open = indexedDB.open("MyDatabase", 1);
 
-
-  save.addEventListener('click', function(){
-    var open = indexedDB.open("MyDatabase", 1);
-  console.log(cost);
     open.onupgradeneeded = function() {
         var db = open.result;
         var store = db.createObjectStore("MyObjectStore", {keyPath: "id"});
@@ -25,12 +22,12 @@ if (!indexedDB) {
         cookieAmount:  cookieCounter,
         cookieProductivity:  productPerSecond,
         amountOfMakers:  volume,
-        costOfMakers1:  cost,
+        costOfMakers:  cost,
       }
     });
-   }
+    }
 
 
-  // window.location.href='index.html';
+  window.location.href='index.html';
   });
 }
