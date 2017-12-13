@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 
-
+ 
   if (!indexedDB) {
     alert("ERROR, PLEASE USE A NEWER BROWSER ");
   } else {

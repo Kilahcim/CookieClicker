@@ -2,7 +2,7 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 
 if (!indexedDB) {
   alert("ERROR, PLEASE USE A NEWER BROWSER ");
-} else {
+} else { 
   document.querySelector('.save').addEventListener('click', function(){
   var open = indexedDB.open("MyDatabase", 1);
 
