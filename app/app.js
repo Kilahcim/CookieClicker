@@ -95,7 +95,7 @@ button.on('click', function(){
     cookieCounterToView = cookieCounter;
     amount.text(cookieCounterToView);
 
-    cost[attribute] = (cost[attribute] * 1.3).toFixed(0);
+    cost[attribute] = (cost[attribute] * 1.1 ).toFixed(0);
     ($(this).parent().prev('.cost')).text(shorten(cost[attribute]));
 
     volume[attribute]++;
