@@ -2,9 +2,13 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 
 if (!indexedDB) {
   alert("ERROR, PLEASE USE A NEWER BROWSER ");
-} else { 
+} else {
   document.querySelector('.save').addEventListener('click', function(){
   var open = indexedDB.open("MyDatabase", 1);
+  open.onerror = function() {
+    alert("SORRY WE CAN NOT SEND YOUR SCORE")
+  }
+
 
     open.onupgradeneeded = function() {
         var db = open.result;

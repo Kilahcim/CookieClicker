@@ -2,11 +2,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
   var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 
- 
+
   if (!indexedDB) {
     alert("ERROR, PLEASE USE A NEWER BROWSER ");
   } else {
     var open = indexedDB.open("MyDatabase", 1);
+
+    open.onerror = function() {
+      alert("SORRY WE CAN NOT DOWNLOAD YOUR SCORE")
+    }
 
     open.onupgradeneeded = function() {
         var db = open.result;
