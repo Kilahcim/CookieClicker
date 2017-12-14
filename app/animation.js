@@ -56,9 +56,6 @@ document.addEventListener('DOMContentLoaded', function(){
     draw();
     window.requestAnimationFrame(repeat)
   }
-
+  
   repeat();
-
-
-
 })

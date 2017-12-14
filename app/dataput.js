@@ -25,6 +25,7 @@ if (!indexedDB) {
       gameData: {
         cookieAmount:  cookieCounter,
         cookieProductivity:  productPerSecond,
+        cookieProductivityPS: productivityPS,
         amountOfMakers:  volume,
         costOfMakers:  cost,
       }
