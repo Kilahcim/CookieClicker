@@ -86,13 +86,13 @@ function shorten(num) {
       cost.cursor = (cost.cursor * 1.1).toFixed(0);
       ($(this).parent().prev('.cost')).text(cost.cursor);
   // DISPLAY & INCREASING POINTER AMOUNT
-      volume[attribute]++;
+      volume.cursor++;
       var displayAmount =  $(this).parent().parent().children().first();
-      $(displayAmount).find('div.popup span.amountOfMakers').text(volume[attribute]);
+      $(displayAmount).find('div.popup span.amountOfMakers').text(volume.cursor);
   // DISPLAY PRODUCE PER SECOND
       var displayAmount =  $(this).parent().parent().children().first();
-      productivityPS[attribute] += productivity[attribute];
-      $(displayAmount).find('div.popup span.pps').text(productivityPS[attribute]);
+      productivityPS.cursor += productivity.cursor;
+      $(displayAmount).find('div.popup span.pps').text(productivityPS.cursor);
   // CLICK FUNCTION
       setInterval(function(){
         mainCookie.trigger('click');
