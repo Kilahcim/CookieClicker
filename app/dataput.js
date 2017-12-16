@@ -20,16 +20,36 @@ if (!indexedDB) {
       var tx = db.transaction("MyObjectStore", "readwrite");
       var store = tx.objectStore("MyObjectStore");
 
-    store.put({
-      id: 1,
-      gameData: {
-        cookieAmount:  cookieCounter,
-        cookieProductivity:  productPerSecond,
-        cookieProductivityPS: productivityPS,
-        amountOfMakers:  volume,
-        costOfMakers:  cost,
-      }
-    });
+      store.put({
+        id: 1,
+        gameData: {
+          cookieAmount:  engine.getCookieCounter(),
+          cookieProductivity:  engine.getProductPerSecond(),
+
+          amountOfMakers: {
+            cursor: engine.getCursorVol(),
+            grandma: engine.getGrandmaVol(),
+            farm: engine.getFarmVol(),
+            bakery: engine.getBakeryVol(),
+            mine: engine.getMineVol()
+          },
+          costOfMakers:  {
+            cursor: engine.getCursorPrice(),
+            grandma: engine.getGrandmaPrice(),
+            farm: engine.getFarmPrice(),
+            bakery: engine.getBakeryPrice(),
+            mine: engine.getMinePrice()
+          },
+          productivityEachMakers: {
+            grandma: engine.getGrandmaPPS(),
+            farm: engine.getFarmPPS(),
+            bakery: engine.getBakeryPPS(),
+            mine: engine.getMinePPS()
+          },
+
+
+        },
+      });
     }
 
 
