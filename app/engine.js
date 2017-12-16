@@ -210,5 +210,11 @@ var engine;
     incMineVol: function(value){
       mine.vol += value;
     },
+    reset: function () {
+     cookieCounter = 0;
+     productPerSecond = 0;
+     cursor = 0;
+   }
   }
+
 })();
