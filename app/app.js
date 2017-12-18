@@ -1,10 +1,7 @@
-// Main set
-
 var mainCookie = $('.cookie');
 var button = $('.btn');
 var amount = $('.amount');
 amount.text(cookieCounterToView);
-// var incrementGrandmaPPS ;
 var productivityDisplay = $('.productivity') ;
 
 var cookieCounterToView = 0;
@@ -40,7 +37,6 @@ var productivityPS = {
   bakery: 0,
   mine: 0
 }
-// shorten a large number
 
 function shorten(num) {
   if (num < 1000) {
@@ -62,140 +58,131 @@ function shorten(num) {
     amount.text(shorten(cookieCounterToView));
 });
 
-// EVERY SECOND DO TICK ON ENGIN
 setInterval(function () {
  engine.tick();
 }, 1000);
 
-  // DISPLAY SCORE, SCORE PER SECOND FUNCTION
-  setInterval(function() {
-    engine.incCookieCounter(engine.getProductPerSecond());
-  }, 1000)
 
-  setInterval(function () {
-    cookieCounterToView = engine.getCookieCounter();
-    amount.text(shorten(cookieCounterToView));
-  }, 1);
+setInterval(function() {
+  engine.incCookieCounter(engine.getProductPerSecond());
+}, 1000)
+
+setInterval(function () {
+  cookieCounterToView = engine.getCookieCounter();
+  amount.text(shorten(cookieCounterToView));
+}, 1);
 
   // Function for button click:
 
-  button.on('click', function(){
-      var attribute = $(this).attr('data-name')
-      var displayAmount =  $(this).parent().parent().children().first();
+button.on('click', function(){
+  var attribute = $(this).attr('data-name')
+  var displayAmount =  $(this).parent().parent().children().first();
 
-      if((engine.getCookieCounter() >= engine.getCursorPrice()) && ($(this).attr('data-name') === 'cursor')){
+  if((engine.getCookieCounter() >= engine.getCursorPrice()) && ($(this).attr('data-name') === 'cursor')){
 
-        engine.incCookieCounter(- engine.getCursorPrice());
-        cookieCounterToView = engine.getCookieCounter();
-        amount.text(cookieCounterToView);
+    engine.incCookieCounter(- engine.getCursorPrice());
+    cookieCounterToView = engine.getCookieCounter();
+    amount.text(cookieCounterToView);
 
-        engine.incCursorPrice(1.1);
-        ($(this).parent().prev('.cost')).text(shorten(engine.getCursorPrice()));
+    engine.incCursorPrice(1.1);
+    ($(this).parent().prev('.cost')).text(shorten(engine.getCursorPrice()));
 
-        engine.incCursorVol(1);
-        $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getCursorVol());
-
-
-      }
-
-      if((engine.getCookieCounter() >= engine.getGrandmaPrice()) && ($(this).attr('data-name') === 'grandma')) {
-        engine.incCookieCounter(- engine.getGrandmaPrice());
-        cookieCounterToView = engine.getCookieCounter();
-        amount.text(cookieCounterToView);
-
-        engine.incGrandmaPrice(1.1);
-        ($(this).parent().prev('.cost')).text(shorten(engine.getGrandmaPrice()));
-
-        engine.incGrandmaVol(1);
-        $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getGrandmaVol());
-
-        engine.incGrandmaPPS(1);
-        $(displayAmount).find('div.popup span.pps').text(engine.getGrandmaPPS());
-
-        engine.incProductPerSecond(1);
-        productivityDisplay.text(shorten(engine.getProductPerSecond()));
-      };
-
-      if((engine.getCookieCounter() >= engine.getFarmPrice()) && ($(this).attr('data-name') === 'farm')) {
-        engine.incCookieCounter(- engine.getFarmPrice());
-        cookieCounterToView = engine.getCookieCounter();
-        amount.text(cookieCounterToView);
-
-        engine.incFarmPrice(1.1);
-        ($(this).parent().prev('.cost')).text(shorten(engine.getFarmPrice()));
-
-        engine.incFarmVol(1);
-        $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getFarmVol());
-
-        engine.incFarmPPS(8);
-        $(displayAmount).find('div.popup span.pps').text(engine.getFarmPPS());
-
-        engine.incProductPerSecond(8);
-        productivityDisplay.text(shorten(engine.getProductPerSecond()));
-      };
-
-      if((engine.getCookieCounter() >= engine.getBakeryPrice()) && ($(this).attr('data-name') === 'bakery')) {
-        engine.incCookieCounter(- engine.getBakeryPrice());
-        cookieCounterToView = engine.getCookieCounter();
-        amount.text(cookieCounterToView);
-
-        engine.incBakeryPrice(1.1);
-        ($(this).parent().prev('.cost')).text(shorten(engine.getBakeryPrice()));
-
-        engine.incBakeryVol(1);
-        $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getBakeryVol());
-
-        engine.incBakeryPPS(47)
-        $(displayAmount).find('div.popup span.pps').text(engine.getBakeryPPS());
-
-        engine.incProductPerSecond(47);
-        productivityDisplay.text(shorten(engine.getProductPerSecond()));
+    engine.incCursorVol(1);
+    $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getCursorVol());
 
 
-      };
-      if((engine.getCookieCounter() >= engine.getMinePrice()) && ($(this).attr('data-name') === 'mine')) {
-        engine.incCookieCounter(- engine.getMinePrice());
-        cookieCounterToView = engine.getCookieCounter();
-        amount.text(cookieCounterToView);
+  }
 
-        engine.incMinePrice(1.1);
-        ($(this).parent().prev('.cost')).text(shorten(engine.getMinePrice()));
+  if((engine.getCookieCounter() >= engine.getGrandmaPrice()) && ($(this).attr('data-name') === 'grandma')) {
+    engine.incCookieCounter(- engine.getGrandmaPrice());
+    cookieCounterToView = engine.getCookieCounter();
+    amount.text(cookieCounterToView);
 
-        engine.incMineVol(1);
-        $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getMineVol());
+    engine.incGrandmaPrice(1.1);
+    ($(this).parent().prev('.cost')).text(shorten(engine.getGrandmaPrice()));
 
-        var incrementPPS = (engine.getMinePPS(260));
-        $(displayAmount).find('div.popup span.pps').text(engine.getMinePPS());
+    engine.incGrandmaVol(1);
+    $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getGrandmaVol());
 
-        engine.incProductPerSecond(260);
-        productivityDisplay.text(shorten(engine.getProductPerSecond()));
+    engine.incGrandmaPPS(1);
+    $(displayAmount).find('div.popup span.pps').text(engine.getGrandmaPPS());
 
+    engine.incProductPerSecond(1);
+    productivityDisplay.text(shorten(engine.getProductPerSecond()));
+  };
 
-      };
+  if((engine.getCookieCounter() >= engine.getFarmPrice()) && ($(this).attr('data-name') === 'farm')) {
+    engine.incCookieCounter(- engine.getFarmPrice());
+    cookieCounterToView = engine.getCookieCounter();
+    amount.text(cookieCounterToView);
 
+    engine.incFarmPrice(1.1);
+    ($(this).parent().prev('.cost')).text(shorten(engine.getFarmPrice()));
 
+    engine.incFarmVol(1);
+    $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getFarmVol());
 
-    // OTHER
+    engine.incFarmPPS(8);
+    $(displayAmount).find('div.popup span.pps').text(engine.getFarmPPS());
 
-      // else if(cookieCounter >= cost[attribute]){
-      //
-      //   cookieCounter -= cost[attribute];
-      //   cookieCounterToView = cookieCounter;
-      //   amount.text(cookieCounterToView);
-      //
-      //   cost[attribute] = (cost[attribute] * 1.1 ).toFixed(0);
-      //   ($(this).parent().prev('.cost')).text(shorten(cost[attribute]));
-      //
-      //   volume[attribute]++;
-      //   var displayAmount =  $(this).parent().parent().children().first();
-      //   $(displayAmount).find('div.popup span.amountOfMakers').text(volume[attribute]);
-      //
-      //   productivityPS[attribute] += productivity[attribute];
-      //   $(displayAmount).find('div.popup span.pps').text(productivityPS[attribute]);
-      //
-      //   productPerSecond += productivity[attribute];
-      //   productivityDisplay.text(shorten(productPerSecond));
-      //
-      // }
+    engine.incProductPerSecond(8);
+    productivityDisplay.text(shorten(engine.getProductPerSecond()));
+  };
+
+  if((engine.getCookieCounter() >= engine.getBakeryPrice()) && ($(this).attr('data-name') === 'bakery')) {
+    engine.incCookieCounter(- engine.getBakeryPrice());
+    cookieCounterToView = engine.getCookieCounter();
+    amount.text(cookieCounterToView);
+
+    engine.incBakeryPrice(1.1);
+    ($(this).parent().prev('.cost')).text(shorten(engine.getBakeryPrice()));
+
+    engine.incBakeryVol(1);
+    $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getBakeryVol());
+
+    engine.incBakeryPPS(47)
+    $(displayAmount).find('div.popup span.pps').text(engine.getBakeryPPS());
+
+    engine.incProductPerSecond(47);
+    productivityDisplay.text(shorten(engine.getProductPerSecond()));
+  };
+
+  if((engine.getCookieCounter() >= engine.getMinePrice()) && ($(this).attr('data-name') === 'mine')) {
+    engine.incCookieCounter(- engine.getMinePrice());
+    cookieCounterToView = engine.getCookieCounter();
+    amount.text(cookieCounterToView);
+
+    engine.incMinePrice(1.1);
+    ($(this).parent().prev('.cost')).text(shorten(engine.getMinePrice()));
+
+    engine.incMineVol(1);
+    $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getMineVol());
+
+    var incrementPPS = (engine.getMinePPS(260));
+    $(displayAmount).find('div.popup span.pps').text(engine.getMinePPS());
+
+    engine.incProductPerSecond(260);
+    productivityDisplay.text(shorten(engine.getProductPerSecond()));
+  };
+    // else if(cookieCounter >= cost[attribute]){
+    //
+    //   cookieCounter -= cost[attribute];
+    //   cookieCounterToView = cookieCounter;
+    //   amount.text(cookieCounterToView);
+    //
+    //   cost[attribute] = (cost[attribute] * 1.1 ).toFixed(0);
+    //   ($(this).parent().prev('.cost')).text(shorten(cost[attribute]));
+    //
+    //   volume[attribute]++;
+    //   var displayAmount =  $(this).parent().parent().children().first();
+    //   $(displayAmount).find('div.popup span.amountOfMakers').text(volume[attribute]);
+    //
+    //   productivityPS[attribute] += productivity[attribute];
+    //   $(displayAmount).find('div.popup span.pps').text(productivityPS[attribute]);
+    //
+    //   productPerSecond += productivity[attribute];
+    //   productivityDisplay.text(shorten(productPerSecond));
+    //
+    // }
   });
 })();

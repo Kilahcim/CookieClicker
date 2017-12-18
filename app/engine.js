@@ -37,7 +37,6 @@ var engine;
 
 
   engine = {
-// CookiesCounter
 
     setCookieCounter: function(value) {
       cookieCounter = value;
@@ -50,9 +49,6 @@ var engine;
     incCookieCounter: function(value) {
       cookieCounter += value;
     },
-    // check you have enough
-
-// PRODUCT PER SECOND
 
     setProductPerSecond: function(value) {
       productPerSecond = value;
@@ -64,7 +60,7 @@ var engine;
       productPerSecond += value;
     },
 
-// CURSOR
+
     setCursorPrice: function(value) {
       cursor.price = value;
     },
@@ -94,7 +90,7 @@ var engine;
         cookieCounter+=(cursor.vol);
       }
     },
-//  GRANDMA
+
 
     setGrandmaPrice: function(value) {
       grandma.price = value
@@ -131,7 +127,7 @@ var engine;
     },
 
 
-// FARM
+
     setFarmPrice: function(value) {
       farm.price = value
     },
@@ -166,7 +162,7 @@ var engine;
     incFarmPPS: function(value) {
       farm.pps +=value;
     },
-// BAKERY
+
     setBakeryPrice: function(value) {
       bakery.price = value
     },
@@ -200,7 +196,7 @@ var engine;
     incBakeryPPS: function(value) {
       bakery.pps += value
     },
-// MINE
+
     setMinePrice: function(value) {
       mine.price = value
     },
@@ -208,7 +204,7 @@ var engine;
     setMineVol: function(value) {
       mine.vol = value;
     },
-    
+
     setMinePPS: function(value) {
       mine.pps = value;
     },
@@ -240,7 +236,10 @@ var engine;
     reset: function () {
      cookieCounter = 0;
      productPerSecond = 0;
-     cursor.vol = 0;
+     grandma.vol = 0;
+     grandma.price = 0;
+     grandma.pps = 0;
+
    }
   }
 

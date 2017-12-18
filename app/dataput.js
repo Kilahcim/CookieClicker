@@ -10,48 +10,45 @@ if (!indexedDB) {
   }
 
 
-    open.onupgradeneeded = function() {
-        var db = open.result;
-        var store = db.createObjectStore("MyObjectStore", {keyPath: "id"});
-    };
-
-    open.onsuccess = function() {
+  open.onupgradeneeded = function() {
       var db = open.result;
-      var tx = db.transaction("MyObjectStore", "readwrite");
-      var store = tx.objectStore("MyObjectStore");
+      var store = db.createObjectStore("MyObjectStore", {keyPath: "id"});
+  };
 
-      store.put({
-        id: 1,
-        gameData: {
-          cookieAmount:  engine.getCookieCounter(),
-          cookieProductivity:  engine.getProductPerSecond(),
+  open.onsuccess = function() {
+    var db = open.result;
+    var tx = db.transaction("MyObjectStore", "readwrite");
+    var store = tx.objectStore("MyObjectStore");
 
-          amountOfMakers: {
-            cursor: engine.getCursorVol(),
-            grandma: engine.getGrandmaVol(),
-            farm: engine.getFarmVol(),
-            bakery: engine.getBakeryVol(),
-            mine: engine.getMineVol()
-          },
-          costOfMakers:  {
-            cursor: engine.getCursorPrice(),
-            grandma: engine.getGrandmaPrice(),
-            farm: engine.getFarmPrice(),
-            bakery: engine.getBakeryPrice(),
-            mine: engine.getMinePrice()
-          },
-          productivityEachMakers: {
-            grandma: engine.getGrandmaPPS(),
-            farm: engine.getFarmPPS(),
-            bakery: engine.getBakeryPPS(),
-            mine: engine.getMinePPS()
-          },
+    store.put({
+      id: 1,
+      gameData: {
+        cookieAmount:  engine.getCookieCounter(),
+        cookieProductivity:  engine.getProductPerSecond(),
 
-
+        amountOfMakers: {
+          cursor: engine.getCursorVol(),
+          grandma: engine.getGrandmaVol(),
+          farm: engine.getFarmVol(),
+          bakery: engine.getBakeryVol(),
+          mine: engine.getMineVol()
         },
-      });
-    }
-
+        costOfMakers:  {
+          cursor: engine.getCursorPrice(),
+          grandma: engine.getGrandmaPrice(),
+          farm: engine.getFarmPrice(),
+          bakery: engine.getBakeryPrice(),
+          mine: engine.getMinePrice()
+        },
+        productivityEachMakers: {
+          grandma: engine.getGrandmaPPS(),
+          farm: engine.getFarmPPS(),
+          bakery: engine.getBakeryPPS(),
+          mine: engine.getMinePPS()
+        },
+      },
+    });
+  };
 
   window.location.href='index.html';
   });
