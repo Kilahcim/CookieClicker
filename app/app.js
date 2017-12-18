@@ -39,7 +39,7 @@ var productivityPS = {
 }
 
 function shorten(num) {
-  if (num < 1000) {
+  if ((num < 1000) && (num > 1000000)) {
     return num.toFixed(2);
   }
   if (num > 999) {
