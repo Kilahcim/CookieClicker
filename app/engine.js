@@ -14,30 +14,29 @@ var engine;
   var grandma = {
     price : 100,
     vol : 0,
-    pps: 1,
+    pps: 0,
   };
 
   var farm = {
     price : 1100,
     vol : 0,
-    pps: 8,
+    pps: 0,
   };
 
   var bakery = {
     price : 12000,
     vol : 0,
-    pps: 47,
+    pps: 0,
   };
 
   var mine = {
     price : 130000,
     vol : 0,
-    pps: 260,
+    pps: 0,
   };
 
 
   engine = {
-// CookiesCounter
 
     setCookieCounter: function(value) {
       cookieCounter = value;
@@ -50,7 +49,6 @@ var engine;
     incCookieCounter: function(value) {
       cookieCounter += value;
     },
-// PRODUCT PER SECOND
 
     setProductPerSecond: function(value) {
       productPerSecond = value;
@@ -62,7 +60,7 @@ var engine;
       productPerSecond += value;
     },
 
-// CURSOR
+
     setCursorPrice: function(value) {
       cursor.price = value;
     },
@@ -70,7 +68,6 @@ var engine;
     setCursorVol: function(value) {
       cursor.vol = value;
     },
-
 
     getCursorVol: function() {
       return cursor.vol;
@@ -83,17 +80,17 @@ var engine;
     incCursorPrice: function(value) {
       cursor.price *= value;
     },
-    incCursorVol: function(value){
+    incCursorVol:  function(value) {
       cursor.vol += value;
     },
 
     tick: function () {
       time++;
       if (time % cursor.incrementPeriod === 0) {
-        cookieCounter++;
+        cookieCounter+=(cursor.vol);
       }
     },
-//  GRANDMA
+
 
     setGrandmaPrice: function(value) {
       grandma.price = value
@@ -102,9 +99,12 @@ var engine;
     setGrandmaVol: function(value) {
       grandma.vol = value;
     },
+    setGrandmaPPS: function(value){
+      grandma.pps = value;
+    },
 
     getGrandmaPrice: function() {
-      return grandma.price;
+      return Math.floor(grandma.price);
     },
 
     getGrandmaVol: function() {
@@ -112,24 +112,32 @@ var engine;
     },
 
     getGrandmaPPS: function() {
-      return grandma.pps * grandma.vol;
+      return grandma.pps;
     },
 
     incGrandmaPrice: function(value) {
       grandma.price *= value;
     },
+
     incGrandmaVol: function(value){
       grandma.vol += value;
     },
+    incGrandmaPPS: function(value) {
+      grandma.pps += value;
+    },
 
 
-// FARM
+
     setFarmPrice: function(value) {
       farm.price = value
     },
 
     setFarmVol: function(value) {
       farm.vol = value;
+    },
+
+    setFarmPPS: function(value) {
+      farm.pps = value;
     },
 
     getFarmPrice: function() {
@@ -141,7 +149,7 @@ var engine;
     },
 
     getFarmPPS: function() {
-      return farm.pps * farm.vol;
+      return farm.pps;
     },
 
     incFarmPrice: function(value) {
@@ -151,13 +159,19 @@ var engine;
     incFarmVol: function(value){
       farm.vol += value;
     },
-// BAKERY
+    incFarmPPS: function(value) {
+      farm.pps +=value;
+    },
+
     setBakeryPrice: function(value) {
       bakery.price = value
     },
 
     setBakeryVol: function(value) {
       bakery.vol = value;
+    },
+    setBakeryPPS: function(value) {
+      bakery.pps = value;
     },
 
     getBakeryPrice: function() {
@@ -169,27 +183,30 @@ var engine;
     },
 
     getBakeryPPS: function() {
-      return bakery.pps * bakery.vol;
+      return bakery.pps;
     },
 
     incBakeryPrice: function(value) {
       bakery.price *= value;
     },
 
-    incFarmPrice: function(value) {
-      farm.price *= value;
-    },
-
     incBakeryVol: function(value){
       bakery.vol += value;
     },
-// MINE
+    incBakeryPPS: function(value) {
+      bakery.pps += value
+    },
+
     setMinePrice: function(value) {
       mine.price = value
     },
 
     setMineVol: function(value) {
       mine.vol = value;
+    },
+
+    setMinePPS: function(value) {
+      mine.pps = value;
     },
 
     getMinePrice: function() {
@@ -207,13 +224,22 @@ var engine;
     incMinePrice: function(value) {
       mine.price *= value;
     },
+
     incMineVol: function(value){
       mine.vol += value;
     },
+
+    incMinePPS: function(value) {
+      mine.pps += value;
+    },
+
     reset: function () {
      cookieCounter = 0;
      productPerSecond = 0;
-     cursor = 0;
+     grandma.vol = 0;
+     grandma.price = 0;
+     grandma.pps = 0;
+
    }
   }
 

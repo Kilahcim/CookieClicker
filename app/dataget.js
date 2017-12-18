@@ -21,71 +21,72 @@ document.addEventListener("DOMContentLoaded", function(){
       var db = open.result;
       var tx = db.transaction("MyObjectStore", "readwrite");
       var store = tx.objectStore("MyObjectStore");
-
       var getDataGame = store.get(1);
 
-
-
       getDataGame.onsuccess = function(){
-      // MAIN SCORE
+
+        if(!getDataGame.result) {
+          console.log("I have no previous record");
+          return
+        }
+
         engine.setCookieCounter(getDataGame.result.gameData.cookieAmount);
         document.querySelector('.amount').textContent= shorten(engine.getCookieCounter());
 
-      // COLLECTIVE PERFORMANCE
         engine.setProductPerSecond(getDataGame.result.gameData.cookieProductivity);
         document.querySelector('.productivity').textContent = shorten(engine.getProductPerSecond());
-        //CURSOR PRICE
+
         engine.setCursorPrice(getDataGame.result.gameData.costOfMakers.cursor);
-        document.querySelector(".cursor-price").textContent = engine.getCursorPrice();
-        // CURSOR AMOUNT
+        document.querySelector(".cursor-price").textContent = shorten(engine.getCursorPrice());
+
         engine.setCursorVol(getDataGame.result.gameData.amountOfMakers.cursor);
-        document.querySelector(".cursor-vol").textContent = engine.getCursorVol();
+        document.querySelector(".cursor-vol").textContent = shorten(engine.getCursorVol());
 
-        // GRANDMA PRICE
         engine.setGrandmaPrice(getDataGame.result.gameData.costOfMakers.grandma);
-        document.querySelector(".grandma-price").textContent = engine.getGrandmaPrice();
-        // GRANDMA VOL
+        document.querySelector(".grandma-price").textContent = shorten(engine.getGrandmaPrice());
+
         engine.setGrandmaVol(getDataGame.result.gameData.amountOfMakers.grandma);
-        document.querySelector(".grandma-vol").textContent = engine.getGrandmaVol();
-        // GRANDMA PPS
-        document.querySelector(".grandma-pps").textContent = engine.getGrandmaPPS();
+        document.querySelector(".grandma-vol").textContent = shorten(engine.getGrandmaVol());
 
-        // FARM PRICE
+        engine.setGrandmaPPS(getDataGame.result.gameData.productivityEachMakers.grandma);
+        document.querySelector(".grandma-pps").textContent = shorten(engine.getGrandmaPPS());
+
         engine.setFarmPrice(getDataGame.result.gameData.costOfMakers.farm);
-        document.querySelector(".farm-price").textContent = engine.getFarmPrice();
-        // FARM VOL
+        document.querySelector(".farm-price").textContent = shorten(engine.getFarmPrice());
+
         engine.setFarmVol(getDataGame.result.gameData.amountOfMakers.farm);
-        document.querySelector(".farm-vol").textContent = engine.getFarmVol();
-        // FARM PPS
-        document.querySelector(".farm-pps").textContent = engine.getFarmPPS();
+        document.querySelector(".farm-vol").textContent = shorten(engine.getFarmVol());
 
-        // BAKERY PRICE
+        engine.setFarmPPS(getDataGame.result.gameData.productivityEachMakers.farm);
+        document.querySelector(".farm-pps").textContent = shorten(engine.getFarmPPS());
+
+
         engine.setBakeryPrice(getDataGame.result.gameData.costOfMakers.bakery);
-        document.querySelector(".bakery-price").textContent = engine.getBakeryPrice();
-        // BAKERY VOL
+        document.querySelector(".bakery-price").textContent = shorten(engine.getBakeryPrice());
+
         engine.setBakeryVol(getDataGame.result.gameData.amountOfMakers.bakery);
-        document.querySelector(".bakery-vol").textContent = engine.getBakeryVol();
-        // BAKERY PPS
-        document.querySelector(".bakery-pps").textContent = engine.getBakeryPPS();
+        document.querySelector(".bakery-vol").textContent = shorten(engine.getBakeryVol());
+
+        engine.setBakeryPPS(getDataGame.result.gameData.productivityEachMakers.bakery);
+        document.querySelector(".bakery-pps").textContent = shorten(engine.getBakeryPPS());
 
 
-        // MINE PRICE
+
         engine.setMinePrice(getDataGame.result.gameData.costOfMakers.mine);
-        document.querySelector(".mine-price").textContent = engine.getMinePrice();
-        // MINE VOL
+        document.querySelector(".mine-price").textContent = shorten(engine.getMinePrice());
+
         engine.setMineVol(getDataGame.result.gameData.amountOfMakers.mine);
-        document.querySelector(".mine-vol").textContent = engine.getMineVol();
-        // MINE PPS
-        document.querySelector(".mine-pps").textContent = engine.getMinePPS();
+        document.querySelector(".mine-vol").textContent = shorten(engine.getMineVol());
+
+        engine.setMinePPS(getDataGame.result.gameData.productivityEachMakers.mine);
+        document.querySelector(".mine-pps").textContent = shorten(engine.getMinePPS());
 
         // THIS LOOP I DID BEFORE TESTING APP
         // for (var i = 0; i < namesArr.length; i++) {
         //   document.querySelector('.'+get[namesArr[i]]+'-price').textContent =  getDataGame.result.gameData.costOfMakers[namesArr[i]];
         //   document.querySelector('.'+[namesArr[i]]+'-vol').textContent = getDataGame.result.gameData.amountOfMakers[namesArr[i]];
-
-
-
       }
+      
       tx.oncomplete = function() {
           db.close();
       };

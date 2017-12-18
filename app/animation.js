@@ -20,9 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
       var x = Math.floor(Math.random()*canvas.width);
       var y = Math.floor(Math.random()*canvas.height);
       cookiesArray[i] =  new cookieMaker(x,y);
-
     }
-
 
     function cookieMaker(x, y) {
       this.x = x;
@@ -56,6 +54,6 @@ document.addEventListener('DOMContentLoaded', function(){
     draw();
     window.requestAnimationFrame(repeat)
   }
-  
+
   repeat();
 })
