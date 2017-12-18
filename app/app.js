@@ -72,7 +72,6 @@ setInterval(function () {
   amount.text(shorten(cookieCounterToView));
 }, 1);
 
-  // Function for button click:
 
 button.on('click', function(){
   var attribute = $(this).attr('data-name')
@@ -164,6 +163,7 @@ button.on('click', function(){
     engine.incProductPerSecond(260);
     productivityDisplay.text(shorten(engine.getProductPerSecond()));
   };
+  // I used this loop before testing
     // else if(cookieCounter >= cost[attribute]){
     //
     //   cookieCounter -= cost[attribute];
