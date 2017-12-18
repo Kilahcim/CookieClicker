@@ -61,6 +61,12 @@ function shorten(num) {
     engine.incCookieCounter(1);
     amount.text(shorten(cookieCounterToView));
 });
+
+// EVERY SECOND DO TICK ON ENGIN
+setInterval(function () {
+ engine.tick();
+}, 1000);
+
   // DISPLAY SCORE, SCORE PER SECOND FUNCTION
 
   setInterval(function () {
@@ -74,26 +80,18 @@ function shorten(num) {
   button.on('click', function(){
       var attribute = $(this).attr('data-name')
 
-      if((engine.getCookieCounter() >= engine.getCursorPrice()) && ($(this).attr('data-name') === 'cursor')){
-    // SUBTRACT COST MAKER AND TRANSFER VALUE TO TWO SAME VALUE, BUT IT IS NECESERY TO RUN SHORTEN FUNCTION
-        engine.incCookieCounter(- engine.getCursorPrice());
+      if($(this).attr('data-name') === 'cursor'){
+
+        engine.buyCursor();
         cookieCounterToView = engine.getCookieCounter();
         amount.text(cookieCounterToView);
-    // DISPLAY & INCREASING POINTER COST
 
-        engine.incCursorPrice(1.1);
         ($(this).parent().prev('.cost')).text(shorten(engine.getCursorPrice()));
-    // DISPLAY & INCREASING POINTER AMOUNT
-        engine.incCursorVol(1);
+
         var displayAmount =  $(this).parent().parent().children().first();
         $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getCursorVol());
-    // DISPLAY PRODUCE PER SECOND
-        // productivityPS.cursor += productivity.cursor;
-        // $(displayAmount).find('div.popup span.pps').text(productivityPS.cursor);
-    // CLICK FUNCTION
-        setInterval(function () {
-         engine.tick();
-       }, 1000);
+  
+
       }
 
       if((engine.getCookieCounter() >= engine.getGrandmaPrice()) && ($(this).attr('data-name') === 'grandma')) {

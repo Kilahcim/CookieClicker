@@ -50,6 +50,8 @@ var engine;
     incCookieCounter: function(value) {
       cookieCounter += value;
     },
+    // check you have enough
+
 // PRODUCT PER SECOND
 
     setProductPerSecond: function(value) {
@@ -80,17 +82,18 @@ var engine;
       return cursor.price;
     },
 
-    incCursorPrice: function(value) {
-      cursor.price *= value;
-    },
-    incCursorVol: function(value){
-      cursor.vol += value;
+    buyCursor: function() {
+      if(cookieCounter >= cursor.price ) {
+        cursor.vol++;
+        cookieCounter -= cursor.price;
+        cursor.price * 1.1;
+      }
     },
 
     tick: function () {
       time++;
       if (time % cursor.incrementPeriod === 0) {
-        cookieCounter++;
+        cookieCounter+=(cursor.vol);
       }
     },
 //  GRANDMA
@@ -104,7 +107,7 @@ var engine;
     },
 
     getGrandmaPrice: function() {
-      return grandma.price;
+      return Math.floor(grandma.price);
     },
 
     getGrandmaVol: function() {
@@ -118,6 +121,7 @@ var engine;
     incGrandmaPrice: function(value) {
       grandma.price *= value;
     },
+
     incGrandmaVol: function(value){
       grandma.vol += value;
     },
@@ -213,7 +217,7 @@ var engine;
     reset: function () {
      cookieCounter = 0;
      productPerSecond = 0;
-     cursor = 0;
+     cursor.vol = 0;
    }
   }
 

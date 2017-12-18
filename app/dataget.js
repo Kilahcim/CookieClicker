@@ -26,7 +26,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
+
       getDataGame.onsuccess = function(){
+
+        if(!getDataGame.result) {
+          console.log("I have no previous record");
+          return
+        }
+        
       // MAIN SCORE
         engine.setCookieCounter(getDataGame.result.gameData.cookieAmount);
         document.querySelector('.amount').textContent= shorten(engine.getCookieCounter());
