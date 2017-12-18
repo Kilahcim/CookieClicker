@@ -14,25 +14,25 @@ var engine;
   var grandma = {
     price : 100,
     vol : 0,
-    pps: 1,
+    pps: 0,
   };
 
   var farm = {
     price : 1100,
     vol : 0,
-    pps: 8,
+    pps: 0,
   };
 
   var bakery = {
     price : 12000,
     vol : 0,
-    pps: 47,
+    pps: 0,
   };
 
   var mine = {
     price : 130000,
     vol : 0,
-    pps: 260,
+    pps: 0,
   };
 
 
@@ -73,7 +73,6 @@ var engine;
       cursor.vol = value;
     },
 
-
     getCursorVol: function() {
       return cursor.vol;
     },
@@ -82,12 +81,11 @@ var engine;
       return cursor.price;
     },
 
-    buyCursor: function() {
-      if(cookieCounter >= cursor.price ) {
-        cursor.vol++;
-        cookieCounter -= cursor.price;
-        cursor.price * 1.1;
-      }
+    incCursorPrice: function(value) {
+      cursor.price *= value;
+    },
+    incCursorVol:  function(value) {
+      cursor.vol += value;
     },
 
     tick: function () {
@@ -105,6 +103,9 @@ var engine;
     setGrandmaVol: function(value) {
       grandma.vol = value;
     },
+    setGrandmaPPS: function(value){
+      grandma.pps = value;
+    },
 
     getGrandmaPrice: function() {
       return Math.floor(grandma.price);
@@ -115,7 +116,7 @@ var engine;
     },
 
     getGrandmaPPS: function() {
-      return grandma.pps * grandma.vol;
+      return grandma.pps;
     },
 
     incGrandmaPrice: function(value) {
@@ -124,6 +125,9 @@ var engine;
 
     incGrandmaVol: function(value){
       grandma.vol += value;
+    },
+    incGrandmaPPS: function(value) {
+      grandma.pps += value;
     },
 
 
@@ -136,6 +140,10 @@ var engine;
       farm.vol = value;
     },
 
+    setFarmPPS: function(value) {
+      farm.pps = value;
+    },
+
     getFarmPrice: function() {
       return farm.price;
     },
@@ -145,7 +153,7 @@ var engine;
     },
 
     getFarmPPS: function() {
-      return farm.pps * farm.vol;
+      return farm.pps;
     },
 
     incFarmPrice: function(value) {
@@ -155,6 +163,9 @@ var engine;
     incFarmVol: function(value){
       farm.vol += value;
     },
+    incFarmPPS: function(value) {
+      farm.pps +=value;
+    },
 // BAKERY
     setBakeryPrice: function(value) {
       bakery.price = value
@@ -162,6 +173,9 @@ var engine;
 
     setBakeryVol: function(value) {
       bakery.vol = value;
+    },
+    setBakeryPPS: function(value) {
+      bakery.pps = value;
     },
 
     getBakeryPrice: function() {
@@ -173,19 +187,18 @@ var engine;
     },
 
     getBakeryPPS: function() {
-      return bakery.pps * bakery.vol;
+      return bakery.pps;
     },
 
     incBakeryPrice: function(value) {
       bakery.price *= value;
     },
 
-    incFarmPrice: function(value) {
-      farm.price *= value;
-    },
-
     incBakeryVol: function(value){
       bakery.vol += value;
+    },
+    incBakeryPPS: function(value) {
+      bakery.pps += value
     },
 // MINE
     setMinePrice: function(value) {
@@ -194,6 +207,10 @@ var engine;
 
     setMineVol: function(value) {
       mine.vol = value;
+    },
+    
+    setMinePPS: function(value) {
+      mine.pps = value;
     },
 
     getMinePrice: function() {
@@ -211,9 +228,15 @@ var engine;
     incMinePrice: function(value) {
       mine.price *= value;
     },
+
     incMineVol: function(value){
       mine.vol += value;
     },
+
+    incMinePPS: function(value) {
+      mine.pps += value;
+    },
+
     reset: function () {
      cookieCounter = 0;
      productPerSecond = 0;

@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(){
           console.log("I have no previous record");
           return
         }
-        
+
       // MAIN SCORE
         engine.setCookieCounter(getDataGame.result.gameData.cookieAmount);
         document.querySelector('.amount').textContent= shorten(engine.getCookieCounter());
@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function(){
         engine.setGrandmaVol(getDataGame.result.gameData.amountOfMakers.grandma);
         document.querySelector(".grandma-vol").textContent = engine.getGrandmaVol();
         // GRANDMA PPS
+        engine.setGrandmaPPS(getDataGame.result.gameData.productivityEachMakers.grandma);
         document.querySelector(".grandma-pps").textContent = engine.getGrandmaPPS();
 
         // FARM PRICE
@@ -64,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function(){
         engine.setFarmVol(getDataGame.result.gameData.amountOfMakers.farm);
         document.querySelector(".farm-vol").textContent = engine.getFarmVol();
         // FARM PPS
+        engine.setFarmPPS(getDataGame.result.gameData.productivityEachMakers.farm);
         document.querySelector(".farm-pps").textContent = engine.getFarmPPS();
 
         // BAKERY PRICE
@@ -73,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function(){
         engine.setBakeryVol(getDataGame.result.gameData.amountOfMakers.bakery);
         document.querySelector(".bakery-vol").textContent = engine.getBakeryVol();
         // BAKERY PPS
+        engine.setBakeryPPS(getDataGame.result.gameData.productivityEachMakers.bakery);
         document.querySelector(".bakery-pps").textContent = engine.getBakeryPPS();
 
 
@@ -83,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function(){
         engine.setMineVol(getDataGame.result.gameData.amountOfMakers.mine);
         document.querySelector(".mine-vol").textContent = engine.getMineVol();
         // MINE PPS
+        engine.setMinePPS(getDataGame.result.gameData.productivityEachMakers.mine);
         document.querySelector(".mine-pps").textContent = engine.getMinePPS();
 
         // THIS LOOP I DID BEFORE TESTING APP

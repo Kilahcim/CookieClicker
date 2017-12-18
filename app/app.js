@@ -68,29 +68,33 @@ setInterval(function () {
 }, 1000);
 
   // DISPLAY SCORE, SCORE PER SECOND FUNCTION
+  setInterval(function() {
+    engine.incCookieCounter(engine.getProductPerSecond());
+  }, 1000)
 
   setInterval(function () {
-    engine.incCookieCounter(engine.getProductPerSecond());
     cookieCounterToView = engine.getCookieCounter();
     amount.text(shorten(cookieCounterToView));
-  }, 1000);
+  }, 1);
 
   // Function for button click:
 
   button.on('click', function(){
       var attribute = $(this).attr('data-name')
+      var displayAmount =  $(this).parent().parent().children().first();
 
-      if($(this).attr('data-name') === 'cursor'){
+      if((engine.getCookieCounter() >= engine.getCursorPrice()) && ($(this).attr('data-name') === 'cursor')){
 
-        engine.buyCursor();
+        engine.incCookieCounter(- engine.getCursorPrice());
         cookieCounterToView = engine.getCookieCounter();
         amount.text(cookieCounterToView);
 
+        engine.incCursorPrice(1.1);
         ($(this).parent().prev('.cost')).text(shorten(engine.getCursorPrice()));
 
-        var displayAmount =  $(this).parent().parent().children().first();
+        engine.incCursorVol(1);
         $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getCursorVol());
-  
+
 
       }
 
@@ -103,16 +107,13 @@ setInterval(function () {
         ($(this).parent().prev('.cost')).text(shorten(engine.getGrandmaPrice()));
 
         engine.incGrandmaVol(1);
-        var displayAmount =  $(this).parent().parent().children().first();
         $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getGrandmaVol());
 
-        var incrementPPS = (engine.getGrandmaPPS());
-        $(displayAmount).find('div.popup span.pps').text(incrementPPS);
+        engine.incGrandmaPPS(1);
+        $(displayAmount).find('div.popup span.pps').text(engine.getGrandmaPPS());
 
-        engine.incProductPerSecond(engine.getGrandmaPPS());
+        engine.incProductPerSecond(1);
         productivityDisplay.text(shorten(engine.getProductPerSecond()));
-
-
       };
 
       if((engine.getCookieCounter() >= engine.getFarmPrice()) && ($(this).attr('data-name') === 'farm')) {
@@ -124,17 +125,15 @@ setInterval(function () {
         ($(this).parent().prev('.cost')).text(shorten(engine.getFarmPrice()));
 
         engine.incFarmVol(1);
-        var displayAmount =  $(this).parent().parent().children().first();
         $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getFarmVol());
 
-        var incrementPPS = (engine.getFarmPPS());
-        $(displayAmount).find('div.popup span.pps').text(incrementPPS);
+        engine.incFarmPPS(8);
+        $(displayAmount).find('div.popup span.pps').text(engine.getFarmPPS());
 
-        engine.incProductPerSecond(engine.getFarmPPS());
+        engine.incProductPerSecond(8);
         productivityDisplay.text(shorten(engine.getProductPerSecond()));
-
-
       };
+
       if((engine.getCookieCounter() >= engine.getBakeryPrice()) && ($(this).attr('data-name') === 'bakery')) {
         engine.incCookieCounter(- engine.getBakeryPrice());
         cookieCounterToView = engine.getCookieCounter();
@@ -144,13 +143,12 @@ setInterval(function () {
         ($(this).parent().prev('.cost')).text(shorten(engine.getBakeryPrice()));
 
         engine.incBakeryVol(1);
-        var displayAmount =  $(this).parent().parent().children().first();
         $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getBakeryVol());
 
-        var incrementPPS = (engine.getBakeryPPS());
-        $(displayAmount).find('div.popup span.pps').text(incrementPPS);
+        engine.incBakeryPPS(47)
+        $(displayAmount).find('div.popup span.pps').text(engine.getBakeryPPS());
 
-        engine.incProductPerSecond(engine.getBakeryPPS());
+        engine.incProductPerSecond(47);
         productivityDisplay.text(shorten(engine.getProductPerSecond()));
 
 
@@ -164,13 +162,12 @@ setInterval(function () {
         ($(this).parent().prev('.cost')).text(shorten(engine.getMinePrice()));
 
         engine.incMineVol(1);
-        var displayAmount =  $(this).parent().parent().children().first();
         $(displayAmount).find('div.popup span.amountOfMakers').text(engine.getMineVol());
 
-        var incrementPPS = (engine.getMinePPS());
-        $(displayAmount).find('div.popup span.pps').text(incrementPPS);
+        var incrementPPS = (engine.getMinePPS(260));
+        $(displayAmount).find('div.popup span.pps').text(engine.getMinePPS());
 
-        engine.incProductPerSecond(engine.getMinePPS());
+        engine.incProductPerSecond(260);
         productivityDisplay.text(shorten(engine.getProductPerSecond()));
 
 

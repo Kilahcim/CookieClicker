@@ -8,23 +8,9 @@ describe('Main test', function(){
 
 })
 
-describe('Our grandmaTest', function () {
+describe('App Test', function () {
   beforeEach(function () {
     engine.reset();
-  });
-
-  it('should not buy cursor if you have not enough cookies', function() {
-    cookieCounter(14);
-    engine.buyCursor();
-    expect(engine.getCursorVol )
-  });
-
-  it('should buy cursor if you have enough cookies', function() {
-
-  });
-
-  it('should increase price by 10 % if you buy one cursor', fucntiom() {
-
   });
 
   it('should return 0 cookies at the beginning', function () {
@@ -45,7 +31,7 @@ describe('Our grandmaTest', function () {
     expect(engine.getGrandmaVol()).to.be.eql(1);
   })
   it('should increase grandma price after buy one', function() {
-    // engine.incGrandmaVol(1);
+    engine.incGrandmaVol(1);
     engine.incGrandmaPrice(1.1);
     expect(engine.getGrandmaPrice()).to.be.eq(110);
   })
