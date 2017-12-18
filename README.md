@@ -1,5 +1,5 @@
 # CookieClicker 
-All you need to open this project is run index.html 
+All you need to open this project is download it and run index.html 
 For see test choose test.html file
 
 GAMES RULES: 
